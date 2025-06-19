@@ -1,8 +1,17 @@
 {
-	"devDependencies": {
-		"@types/acorn": "1.0.15-alpha",
-		"@types/estree": "^1.0.6",
-		"typescript": "^5.7.3"
-	},
-	"packageManager": "pnpm@9.14.2+sha512.6e2baf77d06b9362294152c851c4f278ede37ab1eba3a55fda317a4a17b209f4dbb973fb250a77abc463a341fcb1f17f17cfa24091c4eb319cda0d9b84278387",
+  "devDependencies": {
+    "@babel/core": "^7.27.4",
+    "@babel/preset-env": "^7.27.2",
+    "@types/acorn": "1.0.15-alpha",
+    "@types/estree": "^1.0.6",
+    "core-js": "^3.43.0",
+    "esbuild": "^0.25.5",
+    "test262": "https://github.com/tc39/test262/archive/a073f479f80b336256b7fc4e04700c827293e2fe.tar.gz",
+    "test262-harness": "^10.0.0",
+    "typescript": "^5.7.3"
+  },
+  "scripts": {
+    "test262": "root=\"$PWD\"; \"$root/node_modules/.bin/test262-harness\" --host-type=libjs --transformer=\"$root/to-es5.js\" --host-path=\"$root/test262-runner.js\" -t 10 \"$root\"'/node_modules/test262/test/**/*.js' --timeout 30000 --save-only-failed"
+  },
+  "packageManager": "pnpm@9.14.2+sha512.6e2baf77d06b9362294152c851c4f278ede37ab1eba3a55fda317a4a17b209f4dbb973fb250a77abc463a341fcb1f17f17cfa24091c4eb319cda0d9b84278387"
 }

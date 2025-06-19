@@ -8,6 +8,10 @@
  * @fileoverview Interpreting JavaScript in JavaScript.
  * @author interpreter@neil.fraser.name (Neil Fraser)
  */
+(function(root, mod) {
+  if (typeof exports === "object" && typeof module === "object") return mod(exports, require("./acorn.js")); // CommonJS
+  mod(root, root['acorn']); // Plain browser env
+})((typeof globalThis === 'undefined') ? this || window : globalThis, function(exports, acorn) {
 'use strict';
 
 /**
@@ -369,7 +373,7 @@ Interpreter.prototype.parse_ = function(code, sourceFile) {
      options[name] = Interpreter.PARSE_OPTIONS[name];
    }
    options.sourceFile = sourceFile;
-   return Interpreter.nativeGlobal.acorn.parse(code, options);
+   return acorn.parse(code, options);
 };
 
 /**
@@ -4894,3 +4898,6 @@ Interpreter.prototype['getStateStack'] = Interpreter.prototype.getStateStack;
 Interpreter.prototype['setStateStack'] = Interpreter.prototype.setStateStack;
 Interpreter['Status'] = Interpreter.Status;
 Interpreter['VALUE_IN_DESCRIPTOR'] = Interpreter.VALUE_IN_DESCRIPTOR;
+
+exports['Interpreter'] = Interpreter;
+});
