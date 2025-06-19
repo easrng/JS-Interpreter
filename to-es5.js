@@ -14,6 +14,7 @@ module.exports = (code) =>
             },
           ],
         ],
+        sourceType: "script",
       }).code,
       sourcefile: process.argv.at(-1),
       resolveDir: __dirname,
