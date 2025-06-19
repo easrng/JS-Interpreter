@@ -4,17 +4,9 @@
   <meta charset="utf-8">
   <title>JS-Interpreter Demo</title>
   <link href="demos/style.css" rel="stylesheet" type="text/css">
-
+  <script src="acorn.js"></script>
+  <script src="interpreter.js"></script>
   <script>
-    // Depending on the URL argument, load the compressed or uncompressed version.
-    var compressed = (document.location.search === '?compressed');
-    if (compressed) {
-      document.write('<scr'+'ipt src="acorn_interpreter.js"></scr'+'ipt>');
-    } else {
-      document.write('<scr'+'ipt src="acorn.js"></scr'+'ipt>');
-      document.write('<scr'+'ipt src="interpreter.js"></scr'+'ipt>');
-    }
-
     var myInterpreter;
     function initAlert(interpreter, globalObject) {
       var wrapper = function alert(text) {
@@ -108,11 +100,6 @@ alert(result.join(', '));
 
   <p><small>
   <script>
-    if (compressed) {
-      document.write('[ Running compressed bundle.  Switch to <A HREF="?uncompressed">raw sources</A>. ]');
-    } else {
-      document.write('[ Running raw sources.  Switch to <A HREF="?compressed">compressed bundle</A>. ]');
-    }
     disable('disabled');
   </script>
   </small></p>
