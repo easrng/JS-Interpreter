@@ -90,6 +90,11 @@
     // and there's no use case for 3 with JS-Interpreter.
     // -- Neil Fraser, December 2022.
 
+    // JS-Interpreter change:
+    // Allow us to parse eval in strict mode without adding statements
+    strict: false,
+
+
     // Turn on `strictSemicolons` to prevent the parser from doing
     // automatic semicolon insertion.
     strictSemicolons: false,
@@ -1449,6 +1454,12 @@
     inFunction = strict = false;
     labels = [];
     readToken();
+
+    // JS-Interpreter change:
+    // Allow us to parse eval in strict mode without adding statements
+    if (options.strict) {
+      setStrict(true);
+    }
 
     var node = program || startNode();
     var first = true;
